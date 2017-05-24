@@ -1,0 +1,26 @@
+<VirtualHost localhost:80>
+
+	LogLevel info debug
+
+	ErrorLog ${APACHE_LOG_DIR}/error.log
+	CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+    #LoadModule wsgi_module modules/mod_wsgi.so
+
+    ServerName www.example.com
+    ServerAlias example.com
+    ServerAdmin webmaster@example.com
+    #Alias / /sysinfo
+
+    DocumentRoot /var/www/html/host0/
+    WSGIScriptAlias /sysinfo /var/www/html/host0/sysinfo.wsgi
+
+    <Directory /var/www/html/>
+	       Require all granted
+    </Directory>
+
+
+</VirtualHost>
+
+
+# vim: syntax=apache ts=4 sw=4 sts=4 sr noet
